@@ -9,7 +9,7 @@ notifications:
     on_success: always
     on_failure: always
 node_js:
-  - '9'
+  - '11'
 git:
   depth: 3
 script:
