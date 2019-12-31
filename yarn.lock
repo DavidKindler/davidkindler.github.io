@@ -4257,6 +4257,11 @@ direction@^0.1.5:
   resolved "https://registry.yarnpkg.com/direction/-/direction-0.1.5.tgz#ce5d797f97e26f8be7beff53f7dc40e1c1a9ec4c"
   integrity sha1-zl15f5fib4vnvv9T99xA4cGp7Ew=
 
+disqus-react@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/disqus-react/-/disqus-react-1.0.7.tgz#61061d3b6237b956baa9c5d96780fd311cdbecfc"
+  integrity sha512-7sPHIauS5mUxkZtGtik/ELZ38kOGH3N+YFNt7U4ncczNdAVmWNmAetDE+dHYnrL1Xx+Pgueh1uKpvfUIeu7WuQ==
+
 dnd-core@^7.7.0:
   version "7.7.0"
   resolved "https://registry.yarnpkg.com/dnd-core/-/dnd-core-7.7.0.tgz#3166aefc8c5b85ca4ade4ae836712a3108975fab"
@@ -11724,11 +11729,6 @@ react-dev-utils@^4.2.3:
     sockjs-client "1.1.4"
     strip-ansi "3.0.1"
     text-table "0.2.0"
-
-react-disqus-comments@^1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/react-disqus-comments/-/react-disqus-comments-1.4.0.tgz#bf56ff319a35d086f3070d31a4f70ed21ce3a958"
-  integrity sha512-NkCNsnBSujliii5N2HbA6Wy5z2s6GtCtPaJ0D6GWNMSKnP8wmEtQ3u2qAeG9+xHJE2cMRFmfqMpDeJtBay38RA==
 
 react-dnd-html5-backend@^7.2.0:
   version "7.7.0"
