@@ -1,6 +1,6 @@
 ---
 title: 'New Test'
-cover: '5.jpg'
+cover: 'baymax.png'
 category: 'testing'
 date: '2019-12-30'
 slug: 'New-Test'

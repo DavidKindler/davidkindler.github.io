@@ -1,12 +1,13 @@
 ---
-title: "The Fallen Time"
-cover: "7.jpg"
-date: "2017-02-01"
-category: "another one"
+title: 'The Fallen Time'
+cover: 'baymax.png'
+slug: 'the-fallen-time'
+date: '2017-02-01'
+category: 'another one'
 tags:
-    - test
-    - something
-    - tagging
+  - test
+  - something
+  - tagging
 ---
 
 # Autolyci eminus retenta
@@ -17,15 +18,15 @@ Lorem markdownum huc suo ara, dubites celeri mihi bicolor. Secuti non? Suo opus
 quales dant, puppim hanc!
 
 ```js
-enterprise /= mp_operating_quad;
-dsl_runtime.wired_horizontal_jquery = vramUs(64389, aix / socialSector + quad);
+enterprise /= mp_operating_quad
+dsl_runtime.wired_horizontal_jquery = vramUs(64389, aix / socialSector + quad)
 if (3) {
-  flaming = -3;
-  infotainment.horseThreadColumn(copySnippet, 5, day);
+  flaming = -3
+  infotainment.horseThreadColumn(copySnippet, 5, day)
 } else {
-  num_network_cpa = firewireAluExbibyte + denial_virtual_logic + program;
+  num_network_cpa = firewireAluExbibyte + denial_virtual_logic + program
 }
-scanner(1, ram_wddm(map, reader + 3, ole_install));
+scanner(1, ram_wddm(map, reader + 3, ole_install))
 ```
 
 ## In nunc

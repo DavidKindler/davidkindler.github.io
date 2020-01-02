@@ -58,12 +58,12 @@ const config = {
     },
     {
       label: 'About',
-      url: '/about-gatsby-starter-morning-dew',
+      url: '/about',
     },
-    {
-      label: 'Installation',
-      url: '/how-to-install',
-    },
+    // {
+    //   label: 'Installation',
+    //   url: '/how-to-install',
+    // },
   ],
   // Footer information (ex: Github, Netlify...)
   websiteHost: {
@@ -80,12 +80,12 @@ const config = {
         },
         {
           label: 'About',
-          url: '/about-gatsby-starter-morning-dew',
+          url: '/about',
         },
-        {
-          label: 'Installation',
-          url: '/how-to-install',
-        },
+        // {
+        //   label: 'Installation',
+        //   url: '/how-to-install',
+        // },
       ],
     },
     {
@@ -93,15 +93,15 @@ const config = {
       links: [
         {
           label: 'GitHub',
-          url: 'https://github.com/maxpou/gatsby-starter-morning-dew',
+          url: 'https://github.com/davidkindler',
         },
         {
           label: 'Website',
-          url: 'https://www.maxpou.fr',
+          url: 'https://davidkindler.com',
         },
         {
           label: 'Twitter',
-          url: 'https://twitter.com/_maxpou',
+          url: 'https://twitter.com/kindlerdavid',
         },
       ],
     },

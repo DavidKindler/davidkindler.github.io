@@ -7,13 +7,13 @@ import 'prismjs/themes/prism-tomorrow.css'
 import { GlobalStyle } from '../components/Commons'
 import { media } from '../tokens'
 import config from '../../data/SiteConfig'
-import './index.css'
+// import './index.css'
 
 const SiteContent = styled.div`
   margin: 0 0;
 
   @media ${media.medium} {
-    margin: 60px 0;
+    margin: 70px 30px 30px 30px;
   }
 `
 
@@ -26,7 +26,7 @@ export default class MainLayout extends React.Component {
         <Helmet>
           <meta name='description' content={config.siteDescription} />
           <link
-            href='https://fonts.googleapis.com/css?family=Lato:400,700&display=swap'
+            href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,700&display=swap'
             rel='stylesheet'
           />
           <html lang='en' />
@@ -34,6 +34,7 @@ export default class MainLayout extends React.Component {
         <GlobalStyle />
         <Header />
         <SiteContent>{children}</SiteContent>
+
         <Footer />
         {/* // </div> */}
       </>

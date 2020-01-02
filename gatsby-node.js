@@ -3,7 +3,22 @@
 const path = require("path");
 const _ = require("lodash");
 const moment = require("moment");
+const { createFilePath } = require('gatsby-source-filesystem')
 const siteConfig = require("./data/SiteConfig");
+
+// exports.onCreateNode = ({ node, actions, getNode }) => {
+//   const { createNodeField } = actions
+
+//   if (node.internal.type === `MarkdownRemark`) {
+//     const value = createFilePath({ node, getNode })
+//     createNodeField({
+//       name: `slug`,
+//       node,
+//       value,
+//     })
+//   }
+// }
+
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
@@ -39,7 +54,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   }
 };
 
-exports.createPages = async ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
   const postPage = path.resolve("src/templates/post.jsx");
   const tagPage = path.resolve("src/templates/tag.jsx");
@@ -52,10 +67,13 @@ exports.createPages = async ({ graphql, actions }) => {
       allMarkdownRemark {
         edges {
           node {
+            fileAbsolutePath
             fields {
               slug
             }
             frontmatter {
+              cover
+              slug
               title
               tags
               category
@@ -67,15 +85,55 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
 
+  //   const markdownQueryResult = await graphql(`
+  //   {
+  //     allMarkdown: allMdx(
+  //       sort: { fields: [frontmatter___date], order: DESC }
+  //       limit: 1000
+  //     ) {
+  //       edges {
+  //         node {
+  //           fileAbsolutePath
+  //           frontmatter {
+  //             cover
+  //             slug
+  //             title
+  //             tags
+  //             category
+  //             date
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // `)
+
   if (markdownQueryResult.errors) {
-    console.error(markdownQueryResult.errors);
-    throw markdownQueryResult.errors;
+    reporter.panic(markdownQueryResult.errors)
   }
+
+  // if (markdownQueryResult.errors) {
+  //   console.error(markdownQueryResult.errors);
+  //   throw markdownQueryResult.errors;
+  // }
 
   const tagSet = new Set();
   const categorySet = new Set();
 
-  const postsEdges = markdownQueryResult.data.allMarkdownRemark.edges;
+  const markdownFiles = markdownQueryResult.data.allMarkdownRemark.edges
+
+  const postsEdges = markdownFiles.filter(item =>
+    item.node.fileAbsolutePath.includes('/content/posts/')
+  )
+
+  const pagesEdges = markdownFiles.filter(item =>
+    item.node.fileAbsolutePath.includes('/content/pages/')
+  )
+
+  const draftsEdges = markdownFiles.filter(item =>
+    item.node.fileAbsolutePath.includes('/content/draft/')
+  )
+  // const postsEdges = markdownQueryResult.data.allMarkdownRemark.edges;
 
   // Sort posts
   postsEdges.sort((postA, postB) => {

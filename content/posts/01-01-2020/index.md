@@ -1,6 +1,7 @@
 ---
 title: 'Bold Mage2'
-cover: '8.jpg'
+cover: './cover-baymax.png'
+slug: 'bold-mage-2'
 date: '2019-01-01'
 category: 'tech'
 tags:
