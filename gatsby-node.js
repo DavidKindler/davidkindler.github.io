@@ -85,28 +85,28 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
   `);
 
-  //   const markdownQueryResult = await graphql(`
-  //   {
-  //     allMarkdown: allMdx(
-  //       sort: { fields: [frontmatter___date], order: DESC }
-  //       limit: 1000
-  //     ) {
-  //       edges {
-  //         node {
-  //           fileAbsolutePath
-  //           frontmatter {
-  //             cover
-  //             slug
-  //             title
-  //             tags
-  //             category
-  //             date
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
-  // `)
+  const allMarkdownQuery = await graphql(`
+    {
+      allMarkdown: allMdx(
+        sort: { fields: [frontmatter___date], order: DESC }
+        limit: 1000
+      ) {
+        edges {
+          node {
+            fileAbsolutePath
+            frontmatter {
+              cover
+              slug
+              title
+              tags
+              category
+              date
+            }
+          }
+        }
+      }
+    }
+  `)
 
   if (markdownQueryResult.errors) {
     reporter.panic(markdownQueryResult.errors)

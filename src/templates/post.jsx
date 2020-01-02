@@ -6,9 +6,9 @@ import UserInfo from '../components/UserInfo/UserInfo'
 import Disqus from '../components/Disqus/Disqus'
 import PostTags from '../components/PostTags/PostTags'
 import SocialLinks from '../components/SocialLinks/SocialLinks'
-import SEO from '../components/SEO/SEO'
+import SEO from '../components/SEO'
 import config from '../../data/SiteConfig'
-
+import Wrapper from '../components/Wrapper'
 import Hero from '../components/Hero'
 
 // import './b16-tomorrow-dark.css'
@@ -28,28 +28,22 @@ export default class PostTemplate extends React.Component {
     }
     return (
       <Layout>
-        <pre>{JSON.stringify(post, null, 2)}</pre>
-        <div>
-          <Helmet>
-            <title>{`${post.title} | ${config.siteTitle}`}</title>
-          </Helmet>
-          {/* <SEO postPath={slug} postNode={postNode} postSEO /> */}
-          <div>
-            <Hero
-              heroImg={post.cover && post.cover.publicURL}
-              title={post.title}
-            />
-
-            <h1>{post.title}</h1>
-            <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
-            <div className='post-meta'>
-              <PostTags tags={post.tags} />
-              <SocialLinks postPath={slug} postNode={postNode} />
-            </div>
-            <UserInfo config={config} />
-            <Disqus postNode={postNode} />
+        {/* <pre>{JSON.stringify(post, null, 2)}</pre> */}
+        <Helmet>
+          <title>{`${post.title} | ${config.siteTitle}`}</title>
+        </Helmet>
+        <SEO postPath={slug} postNode={postNode} postSEO />
+        <Hero heroImg={post.cover && post.cover.publicURL} title={post.title} />
+        <Wrapper>
+          <h1>{post.title}</h1>
+          <div dangerouslySetInnerHTML={{ __html: postNode.html }} />
+          <div className='post-meta'>
+            <PostTags tags={post.tags} />
+            <SocialLinks postPath={slug} postNode={postNode} />
           </div>
-        </div>
+          <UserInfo config={config} />
+          <Disqus postNode={postNode} />
+        </Wrapper>
       </Layout>
     )
   }
