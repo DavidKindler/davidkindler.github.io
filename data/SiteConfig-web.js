@@ -1,4 +1,5 @@
 
+
 const config = {
   siteTitle: "David Kindler Blog", // Site title.
   siteTitleShort: "DK Blog", // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
