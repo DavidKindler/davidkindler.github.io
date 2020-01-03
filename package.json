@@ -6,11 +6,14 @@
   "dependencies": {
     "@mdx-js/mdx": "^1.5.3",
     "@mdx-js/react": "^1.5.3",
+    "cross-env": "^6.0.3",
     "disqus-react": "^1.0.7",
+    "dotenv": "^8.2.0",
     "gatsby": "^2.15.28",
     "gatsby-image": "^2.2.23",
     "gatsby-plugin-antd": "^2.1.0",
     "gatsby-plugin-catch-links": "^2.1.12",
+    "gatsby-plugin-config": "^1.0.7",
     "gatsby-plugin-feed": "^2.3.15",
     "gatsby-plugin-google-analytics": "^2.1.19",
     "gatsby-plugin-lodash": "^3.1.10",
@@ -19,6 +22,7 @@
     "gatsby-plugin-nprogress": "^2.1.9",
     "gatsby-plugin-offline": "^3.0.11",
     "gatsby-plugin-react-helmet": "^3.1.10",
+    "gatsby-plugin-robots-txt": "^1.5.0",
     "gatsby-plugin-sharp": "^2.2.27",
     "gatsby-plugin-sitemap": "^2.2.16",
     "gatsby-plugin-styled-components": "^3.1.16",
@@ -62,16 +66,15 @@
     "stylelint-config-standard": "^19.0.0",
     "write-good": "^1.0.1"
   },
-  "keywords": [
-    "gatsby"
-  ],
+  "keywords": ["gatsby"],
   "license": "MIT",
   "main": "n/a",
   "scripts": {
     "develop": "gatsby develop",
     "dev": "npm run develop",
     "serve": "gatsby serve",
-    "build": "gatsby build",
+    "build": "cross-env GATSBY_ACTIVE_ENV=github gatsby build",
+    "build:dk": "cross-env GATSBY_ACTIVE_ENV=web gatsby build",
     "build:pp": "gatsby build --prefix-paths",
     "build:gh": "npm run clean && npm run build:pp && gh-pages -d public",
     "clean": "rm -rf public && rm -rf .cache",
@@ -82,8 +85,6 @@
     "format:styles": "prettier '**/*.{css,scss}' --write"
   },
   "remarkConfig": {
-    "plugins": [
-      "remark-preset-lint-recommended"
-    ]
+    "plugins": ["remark-preset-lint-recommended"]
   }
 }

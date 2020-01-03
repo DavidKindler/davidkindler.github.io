@@ -2,11 +2,21 @@ const urljoin = require("url-join");
 const path = require("path");
 const config = require("./data/SiteConfig");
 
+// let activeEnv =
+//   process.env.GATSBY_ACTIVE_ENV || process.env.NODE_ENV || "development"
+// console.log(`Using environment config: '${activeEnv}'`)
+// require("dotenv").config({
+//   path: `.env.${activeEnv}`,
+// })
+// console.log('process.env in gatsby-config', process.env)
+
+
 module.exports = {
   pathPrefix: config.pathPrefix === "" ? "/" : config.pathPrefix,
   siteMetadata: {
     ...config,
-    siteUrl: urljoin(config.siteUrl, config.pathPrefix),
+    // siteUrl: urljoin(config.siteUrl, config.pathPrefix),
+
     rssMetadata: {
       site_url: urljoin(config.siteUrl, config.pathPrefix),
       feed_url: urljoin(config.siteUrl, config.pathPrefix, config.siteRss),
@@ -121,6 +131,13 @@ module.exports = {
         color: config.themeColor
       }
     },
+    "gatsby-plugin-sitemap",
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        policy: [{ userAgent: '*', disallow: ['*/tags/', '*/categories/'] }]
+      }
+    },
     "gatsby-plugin-react-helmet",
     "gatsby-plugin-lodash",
     "gatsby-plugin-sharp",
@@ -128,7 +145,6 @@ module.exports = {
     "gatsby-plugin-catch-links",
     "gatsby-plugin-styled-components",
     "gatsby-plugin-twitter",
-    "gatsby-plugin-sitemap",
     // 'gatsby-plugin-antd',
     // {
     //   resolve: "gatsby-plugin-manifest",
