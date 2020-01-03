@@ -2,7 +2,7 @@
 title: 'Big Test'
 cover: 'baymax.png'
 category: 'moar'
-date: '2018-03-01'
+date: 2018-03-01
 slug: 'Big-Sample-Test'
 tags:
   - test

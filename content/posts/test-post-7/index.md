@@ -1,9 +1,9 @@
 ---
-title: 'New Test'
+title: 'New Test 7'
 cover: 'baymax.png'
 category: 'testing'
-date: '2019-12-30'
-slug: 'New-Test'
+date: 2019-12-30
+slug: 'New-Test-7'
 tags:
   - test
   - huge

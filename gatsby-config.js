@@ -61,16 +61,16 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
-        defaultLayouts: {
-          default: require.resolve('./src/templates/page.jsx'),
-        },
+        // defaultLayouts: {
+        //   default: require.resolve('./src/templates/page.jsx'),
+        // },
         gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-images',
             options: {
-              maxWidth: 590,
-              linkImagesToOriginal: false,
-              withWebp: true,
+              maxWidth: 900,
+              // linkImagesToOriginal: false,
+              // withWebp: true,
             },
           },
           { resolve: 'gatsby-remark-prismjs' },
@@ -82,31 +82,31 @@ module.exports = {
       },
     },
 
-    {
-      resolve: `gatsby-transformer-remark`,
-      options: {
-        plugins: [`gatsby-remark-images`],
-      },
-    },
     // {
-    //   resolve: "gatsby-transformer-remark",
+    //   resolve: `gatsby-transformer-remark`,
     //   options: {
-    //     plugins: [
-    //       {
-    //         resolve: "gatsby-remark-images",
-    //         options: {
-    //           maxWidth: 690
-    //         }
-    //       },
-    //       {
-    //         resolve: "gatsby-remark-responsive-iframe"
-    //       },
-    //       "gatsby-remark-copy-linked-files",
-    //       "gatsby-remark-autolink-headers",
-    //       "gatsby-remark-prismjs"
-    //     ]
-    //   }
+    //     plugins: [`gatsby-remark-images`],
+    //   },
     // },
+    {
+      resolve: "gatsby-transformer-remark",
+      options: {
+        plugins: [
+          {
+            resolve: "gatsby-remark-images",
+            options: {
+              maxWidth: 900
+            }
+          },
+          {
+            resolve: "gatsby-remark-responsive-iframe"
+          },
+          "gatsby-remark-copy-linked-files",
+          "gatsby-remark-autolink-headers",
+          "gatsby-remark-prismjs"
+        ]
+      }
+    },
 
 
     {

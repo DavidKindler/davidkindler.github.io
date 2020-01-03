@@ -1,8 +1,8 @@
 ---
-title: 'Bold Mage2'
+title: 'dec 1, 2019'
 cover: './cover-baymax.png'
-slug: 'bold-mage-2'
-date: 2020-01-01
+slug: '12-01-2019'
+date: 2019-12-01
 category: 'tech'
 tags:
   - javascript

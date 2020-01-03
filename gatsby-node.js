@@ -16,6 +16,17 @@ const siteConfig = require("./data/SiteConfig");
 //       node,
 //       value,
 //     })
+//     if (Object.prototype.hasOwnProperty.call(node, "frontmatter")) {
+
+//       if (Object.prototype.hasOwnProperty.call(node.frontmatter, "date")) {
+//         const date = moment(node.frontmatter.date, siteConfig.dateFromFormat);
+//         if (!date.isValid) {
+//           console.warn(`WARNING: Invalid date.`, node.frontmatter);
+//         } else {
+//           createNodeField({ node, name: "date", value: date.toISOString() });
+//         }
+//       }
+//     }
 //   }
 // }
 
@@ -23,7 +34,7 @@ const siteConfig = require("./data/SiteConfig");
 exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
   let slug;
-  if (node.internal.type === "MarkdownRemark") {
+  if (node.internal.type === "MarkdownRemark" || node.internal.type === 'Mdx') {
     const fileNode = getNode(node.parent);
     const parsedFilePath = path.parse(fileNode.relativePath);
     if (
@@ -38,20 +49,36 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     } else {
       slug = `/${parsedFilePath.dir}/`;
     }
+    createNodeField({ node, name: "slug", value: slug });
 
-    if (Object.prototype.hasOwnProperty.call(node, "frontmatter")) {
-      if (Object.prototype.hasOwnProperty.call(node.frontmatter, "slug"))
-        slug = `/${_.kebabCase(node.frontmatter.slug)}`;
-      if (Object.prototype.hasOwnProperty.call(node.frontmatter, "date")) {
-        const date = moment(node.frontmatter.date, siteConfig.dateFromFormat);
-        if (!date.isValid)
-          console.warn(`WARNING: Invalid date.`, node.frontmatter);
-
+    // if (Object.prototype.hasOwnProperty.call(node, "frontmatter")) {
+    //   if (Object.prototype.hasOwnProperty.call(node.frontmatter, "slug"))
+    //     slug = `/${_.kebabCase(node.frontmatter.slug)}`;
+    if (Object.prototype.hasOwnProperty.call(node.frontmatter, "date")) {
+      const date = moment(node.frontmatter.date, siteConfig.dateFromFormat);
+      if (!date.isValid) {
+        console.warn(`WARNING: Invalid date.`, node.frontmatter);
+      } else {
         createNodeField({ node, name: "date", value: date.toISOString() });
       }
     }
-    createNodeField({ node, name: "slug", value: slug });
+    // }
   }
+
+  // if (node.internal.type === "Mdx") {
+  //   const value = createFilePath({ node, getNode })
+  //   createNodeField({
+  //     // Name of the field you are adding
+  //     name: "slug",
+  //     // Individual MDX node
+  //     node,
+  //     // Generated value based on filepath with "blog" prefix. you
+  //     // don't need a separating "/" before the value because
+  //     // createFilePath returns a path with the leading "/".
+  //     value,
+  //   })
+  // }
+
 };
 
 exports.createPages = async ({ graphql, actions, reporter }) => {
@@ -85,7 +112,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     }
   `);
 
-  const allMarkdownQuery = await graphql(`
+  const markdownQueryResultFOO = await graphql(`
     {
       allMarkdown: allMdx(
         sort: { fields: [frontmatter___date], order: DESC }
@@ -121,6 +148,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const categorySet = new Set();
 
   const markdownFiles = markdownQueryResult.data.allMarkdownRemark.edges
+  // const markdownFiles = markdownQueryResult.data.allMarkdown.edges
 
   const postsEdges = markdownFiles.filter(item =>
     item.node.fileAbsolutePath.includes('/content/posts/')
@@ -192,13 +220,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
     createPage({
       path: edge.node.fields.slug,
+      // path: edge.node.frontmatter.slug,
       component: postPage,
       context: {
         slug: edge.node.fields.slug,
+        // slug: edge.node.frontmatter.slug,
         nexttitle: nextEdge.node.frontmatter.title,
         nextslug: nextEdge.node.fields.slug,
+        // nextslug: nextEdge.node.frontmatter.slug,
         prevtitle: prevEdge.node.frontmatter.title,
         prevslug: prevEdge.node.fields.slug
+        // prevslug: prevEdge.node.frontmatter.slug
       }
     });
   });

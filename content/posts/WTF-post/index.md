@@ -1,15 +1,15 @@
 ---
-title: 'New Test'
+title: 'New Test 4'
 cover: 'baymax.png'
 category: 'testing'
-date: '2019-12-30'
-slug: 'New-Test'
+date: 2019-12-30
+slug: 'New-Test-5'
 tags:
   - test
   - huge
 ---
 
-#New test page
+# New test page
 
 This is intended as a quick reference and showcase. For more complete info, see [John Gruber's original spec](http://daringfireball.net/projects/markdown/) and the [Github-flavored Markdown info page](http://github.github.com/github-flavored-markdown/).
 

@@ -41,7 +41,7 @@ const NotFoundPage = props => {
           node {
             excerpt
             frontmatter {
-              date(formatString: "DD MMMM, YYYY")
+              date
               title
               tags
               slug

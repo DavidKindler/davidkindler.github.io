@@ -2,51 +2,53 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Layout from '../layout'
-import PostListing from '../components/PostListing/PostListing'
+import PostListing from '../components/PostListing'
+import Wrapper from '../components/Wrapper'
 import SEO from '../components/SEO'
+import Pagination from '../components/Pagination'
 import config from '../../data/SiteConfig'
-import './listing.css'
+// import './listing.css'
 
 class Listing extends React.Component {
-  renderPaging () {
-    const { currentPageNum, pageCount } = this.props.pageContext
-    const prevPage = currentPageNum - 1 === 1 ? '/' : `/${currentPageNum - 1}/`
-    const nextPage = `/${currentPageNum + 1}/`
-    const isFirstPage = currentPageNum === 1
-    const isLastPage = currentPageNum === pageCount
+  // renderPaging () {
+  //   const { currentPageNum, pageCount } = this.props.pageContext
+  //   const prevPage = currentPageNum - 1 === 1 ? '/' : `/${currentPageNum - 1}/`
+  //   const nextPage = `/${currentPageNum + 1}/`
+  //   const isFirstPage = currentPageNum === 1
+  //   const isLastPage = currentPageNum === pageCount
 
-    return (
-      <div className='paging-container'>
-        {!isFirstPage && <Link to={prevPage}>Previous</Link>}
-        {[...Array(pageCount)].map((_val, index) => {
-          const pageNum = index + 1
-          return (
-            <Link
-              key={`listing-page-${pageNum}`}
-              to={pageNum === 1 ? '/' : `/${pageNum}/`}
-            >
-              {pageNum}
-            </Link>
-          )
-        })}
-        {!isLastPage && <Link to={nextPage}>Next</Link>}
-      </div>
-    )
-  }
+  //   return (
+  //     <>
+  //       {!isFirstPage && <Link to={prevPage}>Previous</Link>}
+  //       {[...Array(pageCount)].map((_val, index) => {
+  //         const pageNum = index + 1
+  //         return (
+  //           <Link
+  //             key={`listing-page-${pageNum}`}
+  //             to={pageNum === 1 ? '/' : `/${pageNum}/`}
+  //           >
+  //             {pageNum}
+  //           </Link>
+  //         )
+  //       })}
+  //       {!isLastPage && <Link to={nextPage}>Next</Link>}
+  //     </>
+  //   )
+  // }
 
   render () {
     const postEdges = this.props.data.allMarkdownRemark.edges
+    const { currentPageNum, pageCount } = this.props.pageContext
 
     return (
       <Layout>
-        <div className='listing-container'>
-          <div className='posts-container'>
-            <Helmet title={config.siteTitle} />
-            <SEO />
-            <PostListing postEdges={postEdges} />
-          </div>
-          {this.renderPaging()}
-        </div>
+        <Helmet title={config.siteTitle} />
+        <SEO />
+        <Wrapper>
+          <PostListing postEdges={postEdges} />
+        </Wrapper>
+        {/* {this.renderPaging()} */}
+        <Pagination nbPages={pageCount} currentPage={currentPageNum} />
       </Layout>
     )
   }
@@ -59,6 +61,7 @@ export const listingQuery = graphql`
   query ListingQuery($skip: Int!, $limit: Int!) {
     allMarkdownRemark(
       sort: { fields: [fields___date], order: DESC }
+      filter: { fileAbsolutePath: { regex: "//content/posts//" } }
       limit: $limit
       skip: $skip
     ) {
@@ -66,7 +69,7 @@ export const listingQuery = graphql`
         node {
           fields {
             slug
-            date
+            date(formatString: "MMMM DD, YYYY")
           }
           excerpt
           timeToRead

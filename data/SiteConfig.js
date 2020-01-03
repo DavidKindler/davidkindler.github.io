@@ -13,8 +13,8 @@ const config = {
   disqusShortname: "https-davidkindler-github-io", // Disqus shortname.
   postDefaultCategoryID: "Tech", // Default category for posts.
   dateFromFormat: "YYYY-MM-DD", // Date format used in the frontmatter.
-  dateFormat: "DD/MM/YYYY", // Date format for display.
-  postsPerPage: 4, // Amount of posts displayed per listing page.
+  dateFormat: "MMMM DD, YYYY", // Date format for display.
+  postsPerPage: 6, // Amount of posts displayed per listing page.
   userName: "David", // Username to display in the author segment.
   userEmail: "kindlerdavid-github-io@kindler.email", // Email used for RSS feed's author segment
   userTwitter: "kindlerdavid", // Optionally renders "Follow Me" in the UserInfo segment.
