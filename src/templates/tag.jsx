@@ -7,7 +7,7 @@ import Wrapper from '../components/Wrapper'
 import SEO from '../components/SEO'
 // import Pagination from '../components/Pagination'
 
-import config from '../../data/SiteConfig'
+import config from '../../data/siteConfig'
 
 export default class TagTemplate extends React.Component {
   render () {

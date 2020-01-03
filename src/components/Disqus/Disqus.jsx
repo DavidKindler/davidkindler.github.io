@@ -2,7 +2,7 @@
 import React, { Component, Fragment } from 'react'
 import ReactDisqusComments from 'disqus-react'
 import urljoin from 'url-join'
-import config from '../../../data/SiteConfig'
+import config from '../../../data/siteConfig'
 
 class Disqus extends Component {
   render () {

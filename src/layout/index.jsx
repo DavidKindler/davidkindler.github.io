@@ -6,7 +6,7 @@ import Footer from '../components/Footer'
 import 'prismjs/themes/prism-tomorrow.css'
 import { GlobalStyle } from '../components/Commons'
 import { media } from '../tokens'
-import config from '../../data/SiteConfig'
+import config from '../../data/siteConfig'
 // import './index.css'
 
 const SiteContent = styled.div`

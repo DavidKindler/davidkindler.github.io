@@ -8,7 +8,7 @@ import Disqus from '../components/Disqus/Disqus'
 import PostTags from '../components/PostTags'
 import SocialLinks from '../components/SocialLinks/SocialLinks'
 import SEO from '../components/SEO'
-import config from '../../data/SiteConfig'
+import config from '../../data/siteConfig'
 import Wrapper from '../components/Wrapper'
 import Hero from '../components/Hero'
 
