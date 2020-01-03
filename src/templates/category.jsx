@@ -2,6 +2,7 @@ import React from 'react'
 import Helmet from 'react-helmet'
 import { graphql } from 'gatsby'
 import Layout from '../layout'
+import Wrapper from '../components/Wrapper'
 import PostListing from '../components/PostListing'
 import config from '../../data/SiteConfig'
 
@@ -15,7 +16,12 @@ export default class CategoryTemplate extends React.Component {
           <Helmet
             title={`Posts in category "${category}" | ${config.siteTitle}`}
           />
-          <PostListing postEdges={postEdges} />
+          <Wrapper>
+            <h1>Posts in category "{this.props.pageContext.category}"</h1>
+            <PostListing postEdges={postEdges} />
+          </Wrapper>
+
+          {/* <PostListing postEdges={postEdges} /> */}
         </div>
       </Layout>
     )
@@ -35,7 +41,7 @@ export const pageQuery = graphql`
         node {
           fields {
             slug
-            date
+            date(formatString: "MMMM DD, YYYY")
           }
           excerpt
           timeToRead
