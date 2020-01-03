@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url> <loc>https://davidkindler.com/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://davidkindler.com/2/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://davidkindler.com/bold-mage-2</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://davidkindler.com/new-test-6</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://davidkindler.com/new-test-7</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://davidkindler.com/new-test-4</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://davidkindler.com/dec-1-2019</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://davidkindler.com/the-fallen-time</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://davidkindler.com/big-test</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://davidkindler.com/tags/javascript/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://davidkindler.com/tags/test/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://davidkindler.com/tags/huge/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://davidkindler.com/tags/something/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://davidkindler.com/tags/tagging/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://davidkindler.com/categories/tech/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://davidkindler.com/categories/testing/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://davidkindler.com/categories/another-one/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://davidkindler.com/categories/moar/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://davidkindler.com/about/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+</urlset>
