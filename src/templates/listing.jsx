@@ -5,6 +5,7 @@ import Layout from '../layout'
 import PostListing from '../components/PostListing'
 import Wrapper from '../components/Wrapper'
 import SEO from '../components/SEO'
+import Hero from '../components/Hero'
 import Pagination from '../components/Pagination'
 import config from '../../data/siteConfig'
 // import './listing.css'
@@ -44,6 +45,7 @@ class Listing extends React.Component {
       <Layout>
         <Helmet title={config.siteTitle} />
         <SEO />
+        <Hero title={config.siteTitle} subTitle={config.description} />
         <Wrapper>
           <PostListing postEdges={postEdges} />
         </Wrapper>

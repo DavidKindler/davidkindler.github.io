@@ -1,6 +1,6 @@
 ---
 title: 'Know enough about Express to be dangerous'
-cover: ./cover-baymax.png
+cover: ./cover-baymax.jpeg
 slug: know-enough-about-express
 date: 2019-12-15
 category: tech

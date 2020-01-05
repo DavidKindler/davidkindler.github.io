@@ -10,7 +10,7 @@ const config = {
   siteDescription: "A blog site with advanced design in mind.", // Website description used for RSS feeds/meta description tag.
   siteRss: "/rss.xml", // Path to the RSS file.
   // siteFBAppID: "1825356251115265", // FB Application ID for using app insights
-  siteCover: 'cover-baymax.jpeg',
+  siteCover: "cover-grand-canyon.jpg", // file in content/images
   googleAnalyticsID: "UA-35303806-1", // GA tracking ID for davidkindler.github.io.
   disqusShortname: "https-davidkindler-com", // Disqus shortname.
   postDefaultCategoryID: "Tech", // Default category for posts.
