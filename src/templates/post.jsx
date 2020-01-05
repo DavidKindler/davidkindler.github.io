@@ -5,7 +5,7 @@ import Layout from '../layout'
 // import UserInfo from '../components/UserInfo/UserInfo'
 import Article from '../components/Article'
 import Disqus from '../components/Disqus/Disqus'
-import PostTags from '../components/PostTags'
+// import PostTags from '../components/PostTags'
 import SocialLinks from '../components/SocialLinks/SocialLinks'
 import SEO from '../components/SEO'
 import config from '../../data/siteConfig'
@@ -64,7 +64,9 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         slug
         tags
-        cover
+        cover {
+          publicURL
+        }
       }
       fields {
         slug

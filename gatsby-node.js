@@ -35,25 +35,28 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
   const { createNodeField } = actions;
   let slug;
   if (node.internal.type === "MarkdownRemark" || node.internal.type === 'Mdx') {
-    const fileNode = getNode(node.parent);
-    const parsedFilePath = path.parse(fileNode.relativePath);
-    if (
-      Object.prototype.hasOwnProperty.call(node, "frontmatter") &&
-      Object.prototype.hasOwnProperty.call(node.frontmatter, "title")
-    ) {
-      slug = `/${_.kebabCase(node.frontmatter.title)}`;
-    } else if (parsedFilePath.name !== "index" && parsedFilePath.dir !== "") {
-      slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`;
-    } else if (parsedFilePath.dir === "") {
-      slug = `/${parsedFilePath.name}/`;
-    } else {
-      slug = `/${parsedFilePath.dir}/`;
-    }
-    createNodeField({ node, name: "slug", value: slug });
 
-    // if (Object.prototype.hasOwnProperty.call(node, "frontmatter")) {
-    //   if (Object.prototype.hasOwnProperty.call(node.frontmatter, "slug"))
-    //     slug = `/${_.kebabCase(node.frontmatter.slug)}`;
+    if (Object.prototype.hasOwnProperty.call(node, "frontmatter") && Object.prototype.hasOwnProperty.call(node.frontmatter, "slug")) {
+      slug = `/${_.kebabCase(node.frontmatter.slug)}`;
+      createNodeField({ node, name: "slug", value: slug });
+    } else {
+      const fileNode = getNode(node.parent);
+      const parsedFilePath = path.parse(fileNode.relativePath);
+      if (
+        Object.prototype.hasOwnProperty.call(node, "frontmatter") &&
+        Object.prototype.hasOwnProperty.call(node.frontmatter, "title")
+      ) {
+        slug = `/${_.kebabCase(node.frontmatter.title)}`;
+      } else if (parsedFilePath.name !== "index" && parsedFilePath.dir !== "") {
+        slug = `/${parsedFilePath.dir}/${parsedFilePath.name}/`;
+      } else if (parsedFilePath.dir === "") {
+        slug = `/${parsedFilePath.name}/`;
+      } else {
+        slug = `/${parsedFilePath.dir}/`;
+      }
+    }
+
+
     if (Object.prototype.hasOwnProperty.call(node.frontmatter, "date")) {
       const date = moment(node.frontmatter.date, siteConfig.dateFromFormat);
       if (!date.isValid) {
@@ -89,51 +92,79 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const listingPage = path.resolve("./src/templates/listing.jsx");
 
   // Get a full list of markdown posts
-  const markdownQueryResult = await graphql(`
-    {
-      allMarkdownRemark {
-        edges {
-          node {
-            fileAbsolutePath
-            fields {
-              slug
-            }
-            frontmatter {
-              cover
-              slug
-              title
-              tags
-              category
-              date
-            }
-          }
-        }
-      }
-    }
-  `);
+  // const markdownQueryResultFOO = await graphql(`
+  //   {
+  //     allMarkdownRemark {
+  //       edges {
+  //         node {
+  //           fileAbsolutePath
+  //           fields {
+  //             slug
+  //           }
+  //           frontmatter {
+  //             cover
+  //             slug
+  //             title
+  //             tags
+  //             category
+  //             date
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // `);
 
-  const markdownQueryResultFOO = await graphql(`
-    {
-      allMarkdown: allMdx(
-        sort: { fields: [frontmatter___date], order: DESC }
-        limit: 1000
-      ) {
-        edges {
-          node {
-            fileAbsolutePath
-            frontmatter {
-              cover
-              slug
-              title
-              tags
-              category
-              date
-            }
+  // const markdownQueryResult = await graphql(`
+  //   {
+  //     allMarkdown: allMdx(
+  //       sort: { fields: [frontmatter___date], order: DESC }
+  //       limit: 1000
+  //     ) {
+  //       edges {
+  //         node {
+  //           fileAbsolutePath
+  //           fields {
+  //             slug
+  //             date
+  //           }
+  //           frontmatter {
+  //             cover
+  //             slug
+  //             title
+  //             tags
+  //             category
+  //             date
+  //           }
+  //         }
+  //       }
+  //     }
+  //   }
+  // `)
+
+  const markdownQueryResult = await graphql(`
+  {
+    allMarkdown: allMdx(
+      sort: { fields: [frontmatter___date], order: DESC }
+      limit: 1000
+    ) {
+      edges {
+        node {
+          fileAbsolutePath
+          fields {
+            slug
+            date
+          }
+          frontmatter {
+            title
+            slug
+            tags
           }
         }
       }
     }
-  `)
+  }
+`)
 
   if (markdownQueryResult.errors) {
     reporter.panic(markdownQueryResult.errors)
@@ -147,8 +178,8 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const tagSet = new Set();
   const categorySet = new Set();
 
-  const markdownFiles = markdownQueryResult.data.allMarkdownRemark.edges
-  // const markdownFiles = markdownQueryResult.data.allMarkdown.edges
+  // const markdownFiles = markdownQueryResult.data.allMarkdownRemark.edges
+  const markdownFiles = markdownQueryResult.data.allMarkdown.edges
 
   const postsEdges = markdownFiles.filter(item =>
     item.node.fileAbsolutePath.includes('/content/posts/')

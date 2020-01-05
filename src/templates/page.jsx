@@ -51,7 +51,9 @@ export const pageQuery = graphql`
         title
         date
         slug
-        cover
+        cover {
+          publicURL
+        }
       }
     }
   }

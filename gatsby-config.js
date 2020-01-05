@@ -14,20 +14,23 @@ const config = require("./data/siteConfig");
 module.exports = {
   pathPrefix: config.pathPrefix === "" ? "/" : config.pathPrefix,
   siteMetadata: {
-    ...config,
+    title: config.siteTitle,
+    author: config.authorName,
+    description: config.siteDescription,
+    ...config
     // siteUrl: urljoin(config.siteUrl, config.pathPrefix),
 
-    rssMetadata: {
-      site_url: urljoin(config.siteUrl, config.pathPrefix),
-      feed_url: urljoin(config.siteUrl, config.pathPrefix, config.siteRss),
-      title: config.siteTitle,
-      description: config.siteDescription,
-      image_url: `${urljoin(
-        config.siteUrl,
-        config.pathPrefix
-      )}/logos/logo-512.png`,
-      copyright: config.copyright
-    },
+    // rssMetadata: {
+    //   site_url: urljoin(config.siteUrl, config.pathPrefix),
+    //   feed_url: urljoin(config.siteUrl, config.pathPrefix, config.siteRss),
+    //   title: config.siteTitle,
+    //   description: config.siteDescription,
+    //   // image_url: `${urljoin(
+    //   //   config.siteUrl,
+    //   //   config.pathPrefix
+    //   // )}/logos/logo-512.png`,
+    //   copyright: config.copyright
+    // },
   },
   plugins: [
 
@@ -71,16 +74,16 @@ module.exports = {
       resolve: `gatsby-plugin-mdx`,
       options: {
         extensions: [`.mdx`, `.md`],
-        // defaultLayouts: {
-        //   default: require.resolve('./src/templates/page.jsx'),
-        // },
+        defaultLayouts: {
+          default: require.resolve('./src/templates/post.jsx'),
+        },
         gatsbyRemarkPlugins: [
           {
             resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 900,
-              // linkImagesToOriginal: false,
-              // withWebp: true,
+              linkImagesToOriginal: false,
+              withWebp: true,
             },
           },
           { resolve: 'gatsby-remark-prismjs' },
@@ -92,31 +95,31 @@ module.exports = {
       },
     },
 
-    // {
-    //   resolve: `gatsby-transformer-remark`,
-    //   options: {
-    //     plugins: [`gatsby-remark-images`],
-    //   },
-    // },
     {
-      resolve: "gatsby-transformer-remark",
+      resolve: `gatsby-transformer-remark`,
       options: {
-        plugins: [
-          {
-            resolve: "gatsby-remark-images",
-            options: {
-              maxWidth: 900
-            }
-          },
-          {
-            resolve: "gatsby-remark-responsive-iframe"
-          },
-          "gatsby-remark-copy-linked-files",
-          "gatsby-remark-autolink-headers",
-          "gatsby-remark-prismjs"
-        ]
-      }
+        plugins: [`gatsby-remark-images`],
+      },
     },
+    // {
+    //   resolve: "gatsby-transformer-remark",
+    //   options: {
+    //     plugins: [
+    //       {
+    //         resolve: "gatsby-remark-images",
+    //         options: {
+    //           maxWidth: 900
+    //         }
+    //       },
+    //       {
+    //         resolve: "gatsby-remark-responsive-iframe"
+    //       },
+    //       "gatsby-remark-copy-linked-files",
+    //       "gatsby-remark-autolink-headers",
+    //       "gatsby-remark-prismjs"
+    //     ]
+    //   }
+    // },
 
 
     {

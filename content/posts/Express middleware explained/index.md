@@ -1,12 +1,14 @@
 ---
-title: 'New Test 6'
-cover: 'baymax.png'
-category: 'testing'
-date: 2020-01-01
-slug: 'New-Test-6'
+title: 'Know enough about Express middleware to be dangerous'
+cover: ./cover.png
+category: 'nodejs'
+date: 2020-01-05
+slug: know-enough-about-express-middleware
 tags:
-  - test
-  - huge
+  - nodejs
+  - express
+  - middleware
+  - javascript
 ---
 
 # New test page
