@@ -2,19 +2,48 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
+import Helmet from 'react-helmet'
 import Layout from '../layout'
 // import Content from '../components/Content'
-// import Wrapper from '../components/Wrapper'
-// import Hero from '../components/Hero'
-// import SEO from '../components/SEO'
+import Wrapper from '../components/Wrapper'
+import Article from '../components/Article'
+
+import Hero from '../components/Hero'
+import SEO from '../components/SEO'
 // import Disqus from '../components/Disqus'
+import config from '../../data/siteConfig'
 
 export default props => {
-  const page = props.data.page
+  console.log('page props', props)
+  // const page = props.data.page
 
   return (
-    <Layout location={props.location}>
-      <pre>{JSON.stringify(props, null, 2)}</pre>
+    // <Layout location={props.location}>
+    <Layout>
+      {/* <pre>{JSON.stringify(props, null, 2)}</pre> */}
+      <Helmet>
+        <title>{`${props.data.post.frontmatter.title} | ${config.siteTitle}`}</title>
+      </Helmet>
+      <SEO
+        postPath={props.data.post.fields.slug}
+        postNode={props.data.post}
+        postSEO
+      />
+      <Hero
+        heroImg={
+          props.data.post.frontmatter.cover &&
+          props.data.post.frontmatter.cover.publicURL
+        }
+        title={props.data.post.frontmatter.title}
+      />
+      <Wrapper>
+        {/* <PostTags tags={post.tags} /> */}
+        <Article post={props.data.post} />
+        {/* <div dangerouslySetInnerHTML={{ __html: postNode.html }} /> */}
+
+        {/* <UserInfo config={config} /> */}
+      </Wrapper>
+
       {/* <SEO
         title={page.frontmatter.title}
         description={page.excerpt}
@@ -42,18 +71,42 @@ export default props => {
   )
 }
 
+// export const pageQuery = graphql`
+//   query($slug: String!) {
+//     page: mdx(frontmatter: { slug: { eq: $slug } }) {
+//       body
+//       excerpt
+//       frontmatter {
+//         title
+//         date
+//         slug
+//         cover {
+//           publicURL
+//         }
+//       }
+//     }
+//   }
+// `
+
 export const pageQuery = graphql`
-  query($slug: String!) {
-    page: mdx(frontmatter: { slug: { eq: $slug } }) {
-      body
+  query PageBySlug($slug: String!) {
+    post: mdx(frontmatter: { slug: { eq: $slug } }) {
       excerpt
+      body
       frontmatter {
         title
-        date
+        category
+        date(formatString: "MMMM DD, YYYY")
         slug
+        tags
         cover {
           publicURL
         }
+        disqus
+      }
+      fields {
+        slug
+        date
       }
     }
   }

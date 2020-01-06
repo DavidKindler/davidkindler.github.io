@@ -1,6 +1,6 @@
 ---
 title: 'wtf'
-cover: ./cover-baymax.png
+cover: ./cover-baymax.jpeg
 slug: wtf
 date: 2019-01-01
 category: 'tech'

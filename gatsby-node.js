@@ -3,7 +3,7 @@
 const path = require("path");
 const _ = require("lodash");
 const moment = require("moment");
-const { createFilePath } = require('gatsby-source-filesystem')
+// const { createFilePath } = require('gatsby-source-filesystem')
 const siteConfig = require("./data/siteConfig");
 
 // exports.onCreateNode = ({ node, actions, getNode }) => {
@@ -269,23 +269,23 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     });
   });
 
-  // //  Create /page pages
-  // pagesEdges.forEach(edge => {
-  //   createPage({
-  //     path: `/page/${_.kebabCase(edge.node.fields.slug)}/`,
-  //     component: pagePage,
-  //     context: { edge }
-  //   });
-  // });
+  //  Create /page pages
+  pagesEdges.forEach(edge => {
+    createPage({
+      path: `/page/${edge.node.frontmatter.slug}/`,
+      component: pagePage,
+      context: { slug: `${edge.node.frontmatter.slug}` }
+    });
+  });
 
-  // //  Create /draft pages
-  // draftsEdges.forEach(edge => {
-  //   createPage({
-  //     path: `/draft/${_.kebabCase(edge.node.frontmatter.slug)}/`,
-  //     component: pagePage,
-  //     context: { edge }
-  //   });
-  // });
+  //  Create /draft pages
+  draftsEdges.forEach(edge => {
+    createPage({
+      path: `/draft/${edge.node.frontmatter.slug}/`,
+      component: pagePage,
+      context: { slug: edge.node.frontmatter.slug }
+    });
+  });
 
 
   //  Create tag pages
