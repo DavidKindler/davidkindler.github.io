@@ -24,7 +24,7 @@ img {
 }
 
 a {
-  text-decoration: none;
+  text-decoration: underline;
   color: ${colors.primary};
 }
 
