@@ -88,6 +88,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   const { createPage } = actions;
   const postPage = path.resolve("src/templates/post.jsx");
   const tagPage = path.resolve("src/templates/tag.jsx");
+  const pagePage = path.resolve("src/templates/page.jsx");
   const categoryPage = path.resolve("src/templates/category.jsx");
   const listingPage = path.resolve("./src/templates/listing.jsx");
 
@@ -177,6 +178,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
 
   const tagSet = new Set();
   const categorySet = new Set();
+  // const draftSet = new Set();
 
   // const markdownFiles = markdownQueryResult.data.allMarkdownRemark.edges
   const markdownFiles = markdownQueryResult.data.allMarkdown.edges
@@ -238,6 +240,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       });
     }
 
+
     // Generate a list of categories
     if (edge.node.frontmatter.category) {
       categorySet.add(edge.node.frontmatter.category);
@@ -265,6 +268,25 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     });
   });
+
+  // //  Create /page pages
+  // pagesEdges.forEach(edge => {
+  //   createPage({
+  //     path: `/page/${_.kebabCase(edge.node.fields.slug)}/`,
+  //     component: pagePage,
+  //     context: { edge }
+  //   });
+  // });
+
+  // //  Create /draft pages
+  // draftsEdges.forEach(edge => {
+  //   createPage({
+  //     path: `/draft/${_.kebabCase(edge.node.frontmatter.slug)}/`,
+  //     component: pagePage,
+  //     context: { edge }
+  //   });
+  // });
+
 
   //  Create tag pages
   tagSet.forEach(tag => {

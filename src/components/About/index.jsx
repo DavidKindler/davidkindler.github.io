@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
+// import Layout from '../../templates/page'
+import Wrapper from '../Wrapper'
 // import './about.css'
 
 class About extends Component {
   render () {
     return (
-      <div className='about'>
+      <Wrapper>
         <h1>This is about me.</h1>
-      </div>
+      </Wrapper>
     )
   }
 }
