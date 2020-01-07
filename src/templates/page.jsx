@@ -30,10 +30,7 @@ export default props => {
         postSEO
       />
       <Hero
-        heroImg={
-          props.data.post.frontmatter.cover &&
-          props.data.post.frontmatter.cover.publicURL
-        }
+        heroImg={props.data.post.frontmatter.cover}
         title={props.data.post.frontmatter.title}
       />
       <Wrapper>
@@ -101,6 +98,11 @@ export const pageQuery = graphql`
         tags
         cover {
           publicURL
+          childImageSharp {
+            fluid {
+              srcSet
+            }
+          }
         }
         disqus
       }

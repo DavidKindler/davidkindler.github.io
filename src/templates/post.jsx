@@ -11,12 +11,14 @@ import SEO from '../components/SEO'
 import config from '../../data/siteConfig'
 import Wrapper from '../components/Wrapper'
 import Hero from '../components/Hero'
+// import useSiteImages from '../../hooks/use-site-images'
 
 // import './b16-tomorrow-dark.css'
 // import './post.css'
 
 export default class PostTemplate extends React.Component {
   render () {
+    console.log('post props', this.props)
     const { data, pageContext } = this.props
     const { slug } = pageContext
     // const postNode = data.markdownRemark
@@ -28,13 +30,15 @@ export default class PostTemplate extends React.Component {
     if (!post.category_id) {
       post.category_id = config.postDefaultCategoryID
     }
+    // const foo = useSiteImages(post.cover)
     return (
       <Layout>
         <Helmet>
           <title>{`${post.title} | ${config.siteTitle}`}</title>
         </Helmet>
         <SEO postPath={slug} postNode={postNode} postSEO />
-        <Hero heroImg={post.cover && post.cover.publicURL} title={post.title} />
+        {/* <Hero heroImg={post.cover && post.cover.publicURL} title={post.title} /> */}
+        <Hero heroImg={post.cover} title={post.title} />
         <Wrapper>
           {/* <PostTags tags={post.tags} /> */}
           <Article post={postNode} />
@@ -66,6 +70,11 @@ export const pageQuery = graphql`
         tags
         cover {
           publicURL
+          childImageSharp {
+            fluid {
+              srcSet
+            }
+          }
         }
       }
       fields {
