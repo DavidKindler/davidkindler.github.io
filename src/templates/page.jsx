@@ -14,7 +14,7 @@ import SEO from '../components/SEO'
 import config from '../../data/siteConfig'
 
 export default props => {
-  console.log('page props', props)
+  // console.log('page props', props)
   // const page = props.data.page
 
   return (

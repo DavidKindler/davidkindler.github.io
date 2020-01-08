@@ -82,7 +82,7 @@ const config = {
         },
         {
           label: 'About',
-          url: '/about',
+          url: '/page/about',
         },
         // {
         //   label: 'Installation',

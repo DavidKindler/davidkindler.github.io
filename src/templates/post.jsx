@@ -18,7 +18,7 @@ import Hero from '../components/Hero'
 
 export default class PostTemplate extends React.Component {
   render () {
-    console.log('post props', this.props)
+    // console.log('post props', this.props)
     const { data, pageContext } = this.props
     const { slug } = pageContext
     // const postNode = data.markdownRemark

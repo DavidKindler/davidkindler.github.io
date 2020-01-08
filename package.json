@@ -67,13 +67,12 @@
     "stylelint-config-standard": "^19.0.0",
     "write-good": "^1.0.1"
   },
-  "keywords": [
-    "gatsby"
-  ],
+  "keywords": ["gatsby"],
   "license": "MIT",
   "main": "n/a",
   "scripts": {
     "develop": "gatsby develop",
+    "develop:dk": "cross-env GATSBY_ACTIVE_ENV=web gatsby develop",
     "dev": "npm run develop",
     "serve": "gatsby serve",
     "build": "cross-env GATSBY_ACTIVE_ENV=github gatsby build",
@@ -88,8 +87,6 @@
     "format:styles": "prettier '**/*.{css,scss}' --write"
   },
   "remarkConfig": {
-    "plugins": [
-      "remark-preset-lint-recommended"
-    ]
+    "plugins": ["remark-preset-lint-recommended"]
   }
 }
