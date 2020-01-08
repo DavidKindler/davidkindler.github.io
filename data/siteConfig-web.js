@@ -1,7 +1,7 @@
 
 
 const config = {
-  siteTitle: "David Kindler Blog", // Site title.
+  siteTitle: "David Kindler's Blog", // Site title.
   siteTitleShort: "DK Blog", // Short site title for homescreen (PWA). Preferably should be under 12 characters to prevent truncation.
   siteTitleAlt: "Blog site for David Kindler", // Alternative site title for SEO.
   siteLogo: "/logos/cover-baymax.jpg", // Logo used for SEO and manifest.
