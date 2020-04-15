@@ -47,7 +47,8 @@
     "react-share": "^3.0.1",
     "react-twitter-widgets": "^1.7.1",
     "styled-components": "^4.4.1",
-    "url-join": "^4.0.0"
+    "url-join": "^4.0.0",
+    "snyk": "^1.305.1"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.10.6",
@@ -67,7 +68,9 @@
     "stylelint-config-standard": "^19.0.0",
     "write-good": "^1.0.1"
   },
-  "keywords": ["gatsby"],
+  "keywords": [
+    "gatsby"
+  ],
   "license": "MIT",
   "main": "n/a",
   "scripts": {
@@ -84,9 +87,14 @@
     "lint:md": "remark content/",
     "write-good": "write-good $(glob 'content/posts/**/*.md')",
     "format:js": "prettier '**/*.{js,jsx}' --write",
-    "format:styles": "prettier '**/*.{css,scss}' --write"
+    "format:styles": "prettier '**/*.{css,scss}' --write",
+    "snyk-protect": "snyk protect",
+    "prepare": "yarn run snyk-protect"
   },
   "remarkConfig": {
-    "plugins": ["remark-preset-lint-recommended"]
-  }
+    "plugins": [
+      "remark-preset-lint-recommended"
+    ]
+  },
+  "snyk": true
 }
