@@ -48,7 +48,7 @@
     "react-twitter-widgets": "^1.7.1",
     "styled-components": "^4.4.1",
     "url-join": "^4.0.0",
-    "snyk": "^1.305.1"
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "^1.10.6",
