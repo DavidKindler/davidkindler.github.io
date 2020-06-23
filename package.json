@@ -5,7 +5,7 @@
   "author": "David Kindler <kindlerdavid@gmail.com>",
   "dependencies": {
     "@mdx-js/mdx": "^1.5.3",
-    "@mdx-js/react": "^1.5.3",
+    "@mdx-js/react": "^1.6.4",
     "cross-env": "^6.0.3",
     "disqus-react": "^1.0.7",
     "dotenv": "^8.2.0",
@@ -39,7 +39,7 @@
     "gatsby-transformer-sharp": "^2.5.2",
     "lodash": "^4.17.15",
     "moment": "^2.25.3",
-    "netlify-cms-app": "^2.10.1",
+    "netlify-cms-app": "^2.12.13",
     "prismjs": "^1.16.0",
     "react": "^16.10.1",
     "react-dom": "^16.10.1",
