@@ -7,7 +7,7 @@
     "@mdx-js/mdx": "^1.5.3",
     "@mdx-js/react": "^1.6.4",
     "cross-env": "^6.0.3",
-    "disqus-react": "^1.0.7",
+    "disqus-react": "^1.0.9",
     "dotenv": "^8.2.0",
     "gatsby": "^2.22.20",
     "gatsby-background-image": "^0.10.2",
